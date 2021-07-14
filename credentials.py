@@ -1,3 +1,3 @@
-bot_token = "1875143016:AAFx-KFlDi0mHY5IMdz_KEhxqQWxdqvalD8"
+bot_token = "YOUR_BOT_TOKEN_HERE"
 
-bot_chatID = "-594145165"
+bot_chatID = "YOUR_CHAT_ID_HERE"
