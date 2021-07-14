@@ -5,17 +5,24 @@ from credentials import bot_token, bot_chatID
 from datetime import date
 
 def sendMessage(bot_message): 
-    send = f"https://api.telegram.org/bot{bot_token}/sendMessage?chat_id={bot_chatID}&parse_mode=Markdown&text={bot_message}"
-    
+    send = f"https://api.telegram.org/bot{bot_token}/sendMessage?chat_id={bot_chatID}&parse_mode=Markdown&text={bot_message}"    
     requests.get(send)
 
 
+def sendSticker():
+    sticker = "CAACAgEAAxkBAAMcYO8XlNk_8zFjppNE1zJDVy0H2RIAApwDAAKCgRcSHYIMX7KZMYwgBA"
+    send = f"https://api.telegram.org/bot{bot_token}/sendSticker?chat_id={bot_chatID}&sticker={sticker}"
+    requests.get(send)
+    
+
 def Mensagem():
-    if date.today().day != 14:
+    if date.today().day != 5:
         return
     hoje = date.today()
     sendMessage(f"Oi lindos, não gosto de cobrar e o bot tá fazendo o trabalho sujo 🤡")
     sendMessage(f"Hoje é a parcela de {meses.get(hoje.month)} do Alura, obrigado hihi")
+    sendSticker()
+
 
 meses = {
     1: "Janeiro",
@@ -37,4 +44,3 @@ schedule.every().day.at("08:00").do(Mensagem)
 while True:
     schedule.run_pending()
     time.sleep(1)
-
