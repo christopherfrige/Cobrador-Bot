@@ -1,8 +1,10 @@
 import requests
 import schedule
 import time
+import dicts
 from credentials import bot_token, bot_chatID
 from datetime import date
+from random import randint
 
 def sendMessage(bot_message): 
     send = f"https://api.telegram.org/bot{bot_token}/sendMessage?chat_id={bot_chatID}&parse_mode=Markdown&text={bot_message}"    
@@ -13,33 +15,35 @@ def sendSticker():
     sticker = "CAACAgEAAxkBAAMcYO8XlNk_8zFjppNE1zJDVy0H2RIAApwDAAKCgRcSHYIMX7KZMYwgBA"
     send = f"https://api.telegram.org/bot{bot_token}/sendSticker?chat_id={bot_chatID}&sticker={sticker}"
     requests.get(send)
-    
 
-def Mensagem():
+
+def sendPhoto(img):
+    send = f"https://api.telegram.org/bot{bot_token}/sendPhoto?chat_id={bot_chatID}&photo={img}"
+    requests.get(send)
+
+
+def msgCobrança():
     if date.today().day != 5:
         return
     hoje = date.today()
     sendMessage(f"Oi lindos, não gosto de cobrar e o bot tá fazendo o trabalho sujo 🤡")
-    sendMessage(f"Hoje é a parcela de {meses.get(hoje.month)} do Alura, obrigado hihi")
+    sendMessage(f"Hoje é a parcela de {dicts.meses.get(hoje.month)} do Alura, obrigado 🥰")
     sendSticker()
 
 
-meses = {
-    1: "Janeiro",
-    2: "Fevereiro",
-    3: "Março",
-    4: "Abril",
-    5: "Maio",
-    6: "Junho",
-    7: "Julho",
-    8: "Agosto",
-    9: "Setembro",
-    10: "Outubro",
-    11: "Novembro",
-    12: "Dezembro",
-}
+def msgEstudo():
+    randomNum = randint(1,12)
+    sendMessage(dicts.frases.get(randomNum))
+    sendPhoto(dicts.imagens.get(randomNum))
+    
 
-schedule.every().day.at("08:00").do(Mensagem)
+# Mensagem ao ligar o bot
+sendMessage("Estou funcionando, não se preocupa! (Agora com frases toda segunda!)")
+
+schedule.every().day.at("08:00").do(msgCobrança)
+# Para testar as mensagens de Estudo
+#schedule.every().day.at("01:05").do(msgEstudo) 
+schedule.every().monday.at("07:00").do(msgEstudo)
 
 while True:
     schedule.run_pending()
