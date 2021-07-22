@@ -37,9 +37,6 @@ def msgEstudo():
     sendPhoto(dicts.imagens.get(randomNum))
     
 
-# Mensagem ao ligar o bot
-sendMessage("Estou funcionando, não se preocupa! (Agora com frases toda segunda!)")
-
 schedule.every().day.at("08:00").do(msgCobrança)
 # Para testar as mensagens de Estudo
 #schedule.every().day.at("01:05").do(msgEstudo) 
