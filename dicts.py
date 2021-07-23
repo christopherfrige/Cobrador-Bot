@@ -1,3 +1,4 @@
+# Dicionário para relacionar os meses a suas respectivas numerações
 meses = {
     1: "Janeiro",
     2: "Fevereiro",
@@ -13,6 +14,7 @@ meses = {
     12: "Dezembro",
 }
 
+# Frases que serão mandadas toda segunda-feira
 frases = {
     1: "Segunda começando e você:",
     2: "Bom dia fml estude hj pra ser vagabundo amanhã",
@@ -28,6 +30,7 @@ frases = {
     12: "Somos tão fracassados que passamos raiva atoa porque não conquistamos nada"
 }
 
+# Imagens que serão mandadas logo após a mensagem, toda segunda-feira
 imagens = {
     1: "AgACAgEAAxkBAANBYO-row9aZ3pLKTb5XXD4oKPeeLMAAtqoMRulpoFHKDQjd7NiIFgBAAMCAAN4AAMgBA",
     2: "AgACAgEAAxkBAANGYO-uCycD-Ej3qA6hjTh6bepI9jUAAtuoMRulpoFHQhjsUCvfEtEBAAMCAAN5AAMgBA",

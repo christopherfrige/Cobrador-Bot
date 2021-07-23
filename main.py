@@ -35,12 +35,12 @@ def msgEstudo():
     randomNum = randint(1,12)
     sendMessage(dicts.frases.get(randomNum))
     sendPhoto(dicts.imagens.get(randomNum))
-    
 
-schedule.every().day.at("08:00").do(msgCobrança)
+
+schedule.every().day.at("12:00").do(msgCobrança)
 # Para testar as mensagens de Estudo
 #schedule.every().day.at("01:05").do(msgEstudo) 
-schedule.every().monday.at("07:00").do(msgEstudo)
+schedule.every().monday.at("12:00").do(msgEstudo)
 
 while True:
     schedule.run_pending()
